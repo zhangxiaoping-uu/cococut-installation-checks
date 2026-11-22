@@ -1,0 +1,12 @@
+{
+  "name": "cococut-installation-checks",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "electron": "44.4.2",
+    "playwright": "1.63.0",
+    "playwright-core": "1.63.0",
+    "sharp": "0.35.5"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "purpose": "synthetic-installed-client-acceptance-only",
+  "productSourceCommit": "38a71b13f1b11a74f5f28deb750ea01768511952",
+  "files": [
+    {
+      "path": "client/platform/client-release.mjs",
+      "bytes": 963,
+      "sha256": "3a69717ef49dbc0b6436b18ec95c160f1040a0ae4377c5819e7c927fc53e1a50"
+    },
+    {
+      "path": "client/tests/account-payment-ui.test.mjs",
+      "bytes": 13923,
+      "sha256": "045840a450c715c26c7f3c45dfd12845c009cac094765fae46017e1fa9cf4bbb"
+    },
+    {
+      "path": "client/tests/app-update-ui.test.mjs",
+      "bytes": 11053,
+      "sha256": "b0469251ce8475f330a5584b2a5d03838bd2bf28d4bf44b5c0a14055e8374318"
+    },
+    {
+      "path": "contracts/video-analysis/speech.mjs",
+      "bytes": 2302,
+      "sha256": "b7ba07dbcb65b957007711239ae3cdbb55c67784f7b3cd2c6edc20ca22d0cb27"
+    },
+    {
+      "path": "scripts/delivery/client-release-metadata.mjs",
+      "bytes": 3495,
+      "sha256": "a5a39611ea2a2502bc84b990ae21649a638546c02120e1fb9688748cb0baefdf"
+    },
+    {
+      "path": "scripts/delivery/cut-startup-fixture.mjs",
+      "bytes": 1354,
+      "sha256": "319177b7410be2541645097238b5d59d4bbbff401f0ae68f66b75a3348c4c5a2"
+    },
+    {
+      "path": "scripts/delivery/fixtures/analysis-hevc.mp4",
+      "bytes": 13727,
+      "sha256": "79b65b48df2e0cdfa92dd1834a9147ca3804b40854f1d9c94c4db956e6f090ea"
+    },
+    {
+      "path": "scripts/delivery/prepare-short-path-fixture.py",
+      "bytes": 4222,
+      "sha256": "f193effd82b409b46953f6b5e9eb8d3ec3db73a25d5b60b03425307111b0d0cf"
+    },
+    {
+      "path": "scripts/delivery/run-cut-workspace-test.mjs",
+      "bytes": 1468,
+      "sha256": "e629d37c1e76ca77f9f05c9ebaccc122b17807b4cf34f7a85e1617aa9c0d4d3b"
+    },
+    {
+      "path": "scripts/delivery/run-installed-video-analysis-test.mjs",
+      "bytes": 3632,
+      "sha256": "a4e510cb85c3a32d750e89c2f39e50e54a2d69beba2e0782ae007cf4ac428ddf"
+    },
+    {
+      "path": "scripts/delivery/test-analysis-media-processing.mjs",
+      "bytes": 1740,
+      "sha256": "ddf1c8f8a364d6eb9007b6226dc93dadb2ca5b2d8649ad0353311db709dd5286"
+    },
+    {
+      "path": "scripts/delivery/test-analysis-media-processing.py",
+      "bytes": 3342,
+      "sha256": "19a29f9b68a8555fdb4f1e7d67cf6e6e9c0e4a101b8a30f42d94c0ccd40ac3af"
+    },
+    {
+      "path": "scripts/delivery/test-analysis-stdin-lease.mjs",
+      "bytes": 2456,
+      "sha256": "9541eaeb05c2c96f3e8e8926e38e219c08d855606ea82da61c751d461e5e2340"
+    },
+    {
+      "path": "scripts/delivery/test-analysis-stdin-lease.py",
+      "bytes": 1224,
+      "sha256": "2c01f080e7f0f95ceff1575bf999e802c2d182db2d7bf5c486ad929a3dd62f92"
+    },
+    {
+      "path": "scripts/delivery/test-browser-render-profile.mjs",
+      "bytes": 5139,
+      "sha256": "4bfbf8f461de945de8ce061a50ce39c28dcb571a0ec65bec8a508b8cecb5dc46"
+    },
+    {
+      "path": "scripts/delivery/test-cut-runtime.mjs",
+      "bytes": 2038,
+      "sha256": "e6d4292a0cad6b32db3b7e1330e0d7073d66ef25f6b2f3f62d91b2d7eee3c355"
+    },
+    {
+      "path": "scripts/delivery/test-cut-workspace-electron.mjs",
+      "bytes": 4037,
+      "sha256": "f2a0ccdf6fe35ce9d5957da4fcc55c108494a23612a578edd9609f09ae255cde"
+    },
+    {
+      "path": "scripts/delivery/test-installed-cut-export.mjs",
+      "bytes": 3576,
+      "sha256": "47d61fe8a6fb055b655f1cb31eda1ecdd97e86228fed2cc6d9e9a028c2676b52"
+    },
+    {
+      "path": "scripts/delivery/test-installed-login-recovery.mjs",
+      "bytes": 7615,
+      "sha256": "ab0c074f7cf9b19f93a582a792f2f33507060d3ae5a1b68a51462d08421ec910"
+    },
+    {
+      "path": "scripts/delivery/test-installed-packaging-features.mjs",
+      "bytes": 6727,
+      "sha256": "803b633e550de7a7507ac4c51520dc8d2ed238d0d121e24819fa6cfc1ee8a44a"
+    },
+    {
+      "path": "scripts/delivery/test-installed-recharge-ui.mjs",
+      "bytes": 1591,
+      "sha256": "d4471a66fbca96e071120e77cad61efaf8d8a92a62c8fe7755de3a29a19cb946"
+    },
+    {
+      "path": "scripts/delivery/test-installed-video-analysis-electron.mjs",
+      "bytes": 14634,
+      "sha256": "2854b08a5dc732554db26d4e38e3761b84a236e1459284cf0c8efebe6572e2f4"
+    },
+    {
+      "path": "scripts/delivery/test-installed-video-analysis-runtime.mjs",
+      "bytes": 4395,
+      "sha256": "ce1f3e76ef441a6c57fdc0b4c38c1c6fc28c4377bdc729607dbb6abbac7db63b"
+    },
+    {
+      "path": "scripts/delivery/test-onnx-native.mjs",
+      "bytes": 3496,
+      "sha256": "fcf05a5963e1dae1fdc85eccbb170f3da7a3adb251738314e8b5d5ca2be1fc39"
+    },
+    {
+      "path": "scripts/delivery/test-packaging-local-production.mjs",
+      "bytes": 14411,
+      "sha256": "7ca4fbe23e7fe6216155a65c66169368966001da4ddb50a9b39c9648c95124b5"
+    },
+    {
+      "path": "scripts/delivery/test-supporting-materials-runtime.mjs",
+      "bytes": 5348,
+      "sha256": "d33f0bf443149d4c90733175e589a7eadfcbe41da70bc97136852fdb84e7e1bf"
+    },
+    {
+      "path": "scripts/delivery/test-update-workspace-electron.mjs",
+      "bytes": 3829,
+      "sha256": "dfe8488ae7fcba608619d2215759bfe843a6dc8fdd6592e5bf017fc3f123770f"
+    },
+    {
+      "path": "scripts/delivery/test-video-analysis-paths.mjs",
+      "bytes": 4866,
+      "sha256": "79765d247ee47a8da39c6ee9ebfb63a7aaf80cf825cca0b6e826e0f0b6be28e2"
+    },
+    {
+      "path": "scripts/delivery/test-window-lifetime-electron.mjs",
+      "bytes": 3166,
+      "sha256": "0203fc4d2b3cb6b99fdae0df25791c14cfb3c0e0dc8cc8394e5b7c770aa3b863"
+    },
+    {
+      "path": "scripts/delivery/test-windows-fresh-install.mjs",
+      "bytes": 13887,
+      "sha256": "e1245a525878a44fb299116eb4945d40f5607547929bca71a7a36558a468eb6d"
+    },
+    {
+      "path": "scripts/delivery/test-windows-packaging-asr.mjs",
+      "bytes": 1741,
+      "sha256": "8628071d1623338ae22b860d46bedc51d5e8c3e3f29aafeb85b38ea683d63456"
+    },
+    {
+      "path": "scripts/delivery/test-windows-render-worker.mjs",
+      "bytes": 2743,
+      "sha256": "f62a2d7819ba4984d14699f393e778df99a22538e81b565c61916dfe5f786134"
+    },
+    {
+      "path": "scripts/delivery/test-windows-update-helper.mjs",
+      "bytes": 8153,
+      "sha256": "346b60df0f84f749febb0c2c19bf3a7bf744c1abf6152ddf9a2ff33026b97363"
+    },
+    {
+      "path": "scripts/delivery/verify-windows-shortcuts.mjs",
+      "bytes": 4219,
+      "sha256": "68cc69d4e767041e6e6fc5defec536b25a0013299abafa1e9994d94d252f082e"
+    },
+    {
+      "path": "scripts/delivery/windows-branding.mjs",
+      "bytes": 2322,
+      "sha256": "82b43149021ead6fcd597ab8181d52cd4e36e6be15abd2907a3b7db3a89f2add"
+    },
+    {
+      "path": "scripts/delivery/windows-shell-link-unicode.mjs",
+      "bytes": 2762,
+      "sha256": "88cd289931bd9bdb6eb6459cf25aadadf16514c17c89d562ad8566887b3897b5"
+    }
+  ]
+}
