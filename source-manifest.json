@@ -168,6 +168,11 @@
       "sha256": "346b60df0f84f749febb0c2c19bf3a7bf744c1abf6152ddf9a2ff33026b97363"
     },
     {
+      "path": "scripts/delivery/test-windows-update-owner.mjs",
+      "bytes": 3131,
+      "sha256": "2473e8c01aa4c01790bf8c8ce6ce186e9de5c2d9da1c16094c07f09c8a397e56"
+    },
+    {
       "path": "scripts/delivery/verify-windows-shortcuts.mjs",
       "bytes": 4219,
       "sha256": "68cc69d4e767041e6e6fc5defec536b25a0013299abafa1e9994d94d252f082e"
