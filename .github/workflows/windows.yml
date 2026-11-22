@@ -18,12 +18,16 @@ jobs:
           node-version: 24.19.0
       - run: npm install --ignore-scripts --no-audit --no-fund
       - run: node node_modules/electron/install.js
-      - run: node run.mjs
+      - name: Download and authenticate immutable candidate
+        run: node run.mjs --download-only
+      - name: Fresh install, overwrite and local processing
+        run: node run.mjs --verify-only
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: windows-244-verification
           retention-days: 3
+          include-hidden-files: true
           if-no-files-found: warn
           path: |
             .local/rebuild/windows-96/*.json
