@@ -18,6 +18,8 @@ jobs:
           node-version: 24.19.0
       - run: npm install --ignore-scripts --no-audit --no-fund
       - run: node node_modules/electron/install.js
+      - name: Validate acceptance tool imports
+        run: node --input-type=module -e "await import('./scripts/delivery/windows-branding.mjs'); console.log('acceptance dependencies ready')"
       - name: Download and authenticate immutable candidate
         run: node run.mjs --download-only
       - name: Fresh install, overwrite and local processing
