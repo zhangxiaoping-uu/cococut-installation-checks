@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: windows-244-verification
+          name: windows-245-verification
           retention-days: 3
           include-hidden-files: true
           if-no-files-found: warn

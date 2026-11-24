@@ -9,7 +9,7 @@ const candidate=JSON.parse(await readFile('candidate.json')),base=resolve('.loca
 const digest=async file=>{const h=createHash('sha256');for await(const b of createReadStream(file))h.update(b);return h.digest('hex');};
 const mode=process.argv[2];assert.ok([undefined,'--download-only','--verify-only'].includes(mode));
 if(mode!=='--verify-only')for(const asset of candidate.assets){
- const url=new URL(asset.url);assert.equal(url.origin,'https://www.xiongdoudou.com');assert.equal(url.pathname,'/downloads/files/windows-0.1.4-244/'+asset.name);assert.match(asset.sha256,/^[a-f0-9]{64}$/);
+ const url=new URL(asset.url);assert.equal(url.origin,'https://www.xiongdoudou.com');assert.equal(url.pathname,'/downloads/files/windows-0.1.5-245/'+asset.name);assert.match(asset.sha256,/^[a-f0-9]{64}$/);
  const file=await open(join(folder,asset.name),'wx'),stop=new AbortController(),deadline=AbortSignal.timeout(1800000);let completed=0,next=0;const chunk=16*1024**2,parts=Math.ceil(asset.bytes/chunk);
  await file.truncate(asset.bytes);
  const worker=async()=>{while(next<parts){const index=next++,start=index*chunk,end=Math.min(asset.bytes-1,start+chunk-1);let body;

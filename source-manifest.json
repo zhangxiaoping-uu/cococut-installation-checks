@@ -1,6 +1,6 @@
 {
   "purpose": "synthetic-installed-client-acceptance-only",
-  "productSourceCommit": "38a71b13f1b11a74f5f28deb750ea01768511952",
+  "productSourceCommit": "7e50ed190fcd15f5a305b2e383329444ac027094",
   "files": [
     {
       "path": "client/platform/client-release.mjs",
@@ -93,6 +93,16 @@
       "sha256": "47d61fe8a6fb055b655f1cb31eda1ecdd97e86228fed2cc6d9e9a028c2676b52"
     },
     {
+      "path": "scripts/delivery/test-installed-export-browser.mjs",
+      "bytes": 1540,
+      "sha256": "c52bc9d90516542360cc2985caa3254f74f317174567c7cf202b53663da0dd9e"
+    },
+    {
+      "path": "scripts/delivery/test-installed-export-electron.mjs",
+      "bytes": 5962,
+      "sha256": "c2fe453a87bdd9ef370be360fb6759f09eb35348658f1e6e50c395fb5321eadf"
+    },
+    {
       "path": "scripts/delivery/test-installed-login-recovery.mjs",
       "bytes": 7615,
       "sha256": "ab0c074f7cf9b19f93a582a792f2f33507060d3ae5a1b68a51462d08421ec910"
@@ -101,6 +111,11 @@
       "path": "scripts/delivery/test-installed-packaging-features.mjs",
       "bytes": 6727,
       "sha256": "803b633e550de7a7507ac4c51520dc8d2ed238d0d121e24819fa6cfc1ee8a44a"
+    },
+    {
+      "path": "scripts/delivery/test-installed-packaging-mix.mjs",
+      "bytes": 3216,
+      "sha256": "9209869eb4b1d2a0a422a8a1c70ba201f942d6eec19004e3d09d45e61e4b2616"
     },
     {
       "path": "scripts/delivery/test-installed-recharge-ui.mjs",
@@ -149,8 +164,8 @@
     },
     {
       "path": "scripts/delivery/test-windows-fresh-install.mjs",
-      "bytes": 13887,
-      "sha256": "e1245a525878a44fb299116eb4945d40f5607547929bca71a7a36558a468eb6d"
+      "bytes": 14016,
+      "sha256": "3174e61f4e05acb4a18ec5e15087ec59c2866e3ce0f5821e4dbe00b9fd946cd5"
     },
     {
       "path": "scripts/delivery/test-windows-packaging-asr.mjs",

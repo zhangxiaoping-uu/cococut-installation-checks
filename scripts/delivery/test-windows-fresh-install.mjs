@@ -109,6 +109,7 @@ for(const [script,args] of [
  ['test-installed-video-analysis-runtime.mjs',['--app-root',appRoot,'--output',join(process.cwd(),base,'video-analysis-runtime-receipt.json')]],
  ['test-analysis-stdin-lease.mjs',['--app-root',appRoot]],
  ['test-analysis-media-processing.mjs',['--app-root',appRoot]],
+ ['test-installed-export-browser.mjs',['--app-root',appRoot,'--output',join(process.cwd(),base,'export-browser-receipt.json')]],
  ['test-installed-packaging-features.mjs',['--app-root',appRoot,'--output',join(process.cwd(),base,'installed-features-receipt.json')]],
  ['run-installed-video-analysis-test.mjs',['--app-root',appRoot,'--output',join(process.cwd(),base,'video-analysis-native-receipt.json')]],
 ]){const result=await exec(process.execPath,[join('scripts/delivery',script),...args],{timeout:480000,maxBuffer:8*1024*1024});console.log(result.stdout);checks.push(script);}

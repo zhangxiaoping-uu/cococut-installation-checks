@@ -1,40 +1,48 @@
 {
   "clientRelease": {
     "schemaVersion": 1,
-    "version": "0.1.4",
-    "build": 244,
-    "sourceCommit": "38a71b13f1b11a74f5f28deb750ea01768511952",
+    "version": "0.1.5",
+    "build": 245,
+    "sourceCommit": "7e50ed190fcd15f5a305b2e383329444ac027094",
     "platform": "win32",
     "arch": "x64",
     "updateProtocol": 1
   },
-  "assets": [
-    {
-      "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.4-244/CocoCut-0.1.4-x64-244-Online.exe",
-      "name": "CocoCut-0.1.4-x64-244-Online.exe",
-      "bytes": 691429,
-      "sha256": "38a7cfd4bcabad04a9f1a48e1eeed3b9e881333fdfb4842d79616642372f91bf"
-    },
-    {
-      "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.4-244/cocut-windows-delivery-0.1.4-x64.nsis.7z",
-      "name": "cocut-windows-delivery-0.1.4-x64.nsis.7z",
-      "bytes": 1008937072,
-      "sha256": "c427ec837605134e9781100c68594184a97277727d396a3816be27ed0e0030ce"
-    }
-  ],
   "incremental": {
     "descriptor": {
       "schemaVersion": 1,
       "payload": {
-        "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.4-244/cocut-windows-delivery-0.1.4-x64.nsis.7z",
-        "bytes": 1008937072,
-        "sha256": "c427ec837605134e9781100c68594184a97277727d396a3816be27ed0e0030ce"
+        "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.5-245/cocut-windows-delivery-0.1.5-x64.nsis.7z",
+        "bytes": 1008973110,
+        "sha256": "8730aa25f50fd06886c1fa4a70190b53e7e6b9bd0a2dd8c3625088cb2dfd5517"
       },
       "blockmap": {
-        "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.4-244/cocut-windows-delivery-0.1.4-x64.nsis.7z.blocks.json.gz",
-        "bytes": 818327,
-        "sha256": "31a2a2ea5de55e6096707e917496b73ead22e664e93b5e9200c938f147319788"
+        "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.5-245/cocut-windows-delivery-0.1.5-x64.nsis.7z.blocks.json.gz",
+        "bytes": 818359,
+        "sha256": "0f970fd4d3c57cdf8778f9bbb28cd22e479c0932acd79d4400174149e49a712d"
       }
+    },
+    "sidecar": "/Users/zhangzhang/Documents/Codex/2026-09-17/zh/outputs/koubo-studio/next/.local/rebuild/release-245/windows-cross/installer/nsis-web/cocut-windows-delivery-0.1.5-x64.nsis.7z.blocks.json.gz",
+    "blocks": 20450
+  },
+  "assets": [
+    {
+      "name": "CocoCut-0.1.5-x64-245-Online.exe",
+      "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.5-245/CocoCut-0.1.5-x64-245-Online.exe",
+      "bytes": 689909,
+      "sha256": "9eefa6e0c876c4a9fc60d7e8a152bb925437ad5b3df882975f22bacdeb9d7b27"
+    },
+    {
+      "name": "cocut-windows-delivery-0.1.5-x64.nsis.7z",
+      "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.5-245/cocut-windows-delivery-0.1.5-x64.nsis.7z",
+      "bytes": 1008973110,
+      "sha256": "8730aa25f50fd06886c1fa4a70190b53e7e6b9bd0a2dd8c3625088cb2dfd5517"
+    },
+    {
+      "name": "cocut-windows-delivery-0.1.5-x64.nsis.7z.blocks.json.gz",
+      "url": "https://www.xiongdoudou.com/downloads/files/windows-0.1.5-245/cocut-windows-delivery-0.1.5-x64.nsis.7z.blocks.json.gz",
+      "bytes": 818359,
+      "sha256": "0f970fd4d3c57cdf8778f9bbb28cd22e479c0932acd79d4400174149e49a712d"
     }
-  }
+  ]
 }
