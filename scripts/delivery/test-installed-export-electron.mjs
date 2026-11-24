@@ -9,7 +9,7 @@ const {createExportBrowserAlias}=await import(pathToFileURL(path.join(repo,'clie
 app.disableHardwareAcceleration();app.setPath('userData',path.join(dir,'electron-test-profile'));app.on('window-all-closed',()=>{});
 const run=promisify(execFile),ffmpeg=path.join(repo,'.local/rebuild/packaging-resources/bin',process.platform==='win32'?'ffmpeg.exe':'ffmpeg'),ffprobe=path.join(repo,'.local/rebuild/packaging-resources/bin',process.platform==='win32'?'ffprobe.exe':'ffprobe');
 app.whenReady().then(async()=>{let alias,player;const report={platform:process.platform};try{
- const root=path.join(dir,'source-'+ 'a'.repeat(80),'workspaces-'+ 'b'.repeat(80),'draft-export-'+ 'c'.repeat(36)+'-'+Date.now());await fs.mkdir(path.join(root,'assets','中文 目录'),{recursive:true});
+ const root=path.join(dir,'source-'+ 'a'.repeat(80),'workspaces-'+ 'b'.repeat(80),'draft-export-'+ 'c'.repeat(80)+'-'+Date.now());await fs.mkdir(path.join(root,'assets','中文 目录'),{recursive:true});
  await run(ffmpeg,['-v','error','-y','-f','lavfi','-i','testsrc2=size=320x180:rate=30:duration=1','-f','lavfi','-i','sine=frequency=440:duration=1','-c:v','libx264','-preset','ultrafast','-pix_fmt','yuv420p','-c:a','aac','-shortest',path.join(root,'host.mp4')],{timeout:10000});
  await run(ffmpeg,['-v','error','-y','-f','lavfi','-i','color=green:size=32x32','-frames:v','1',path.join(root,'assets','中文 目录','icon #1.png')],{timeout:10000});
  const fonts=path.join(repo,'.local/rebuild/packaging-resources/font-library');await fs.mkdir(path.join(root,'font-library'),{recursive:true});
