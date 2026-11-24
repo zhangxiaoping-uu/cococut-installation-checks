@@ -99,8 +99,8 @@
     },
     {
       "path": "scripts/delivery/test-installed-export-electron.mjs",
-      "bytes": 5962,
-      "sha256": "ac2445668a2ccef8233639fd269c5bc62d5ef9569f5b583daff0ef0bc9828363"
+      "bytes": 6462,
+      "sha256": "763cfe121ca8e5b06bc8f79b3a6208027f44b8ae4d302d4ecb934da1d4974d22"
     },
     {
       "path": "scripts/delivery/test-installed-login-recovery.mjs",
@@ -203,5 +203,5 @@
       "sha256": "88cd289931bd9bdb6eb6459cf25aadadf16514c17c89d562ad8566887b3897b5"
     }
   ],
-  "testSourceCommit": "f8c0504adede083c65411f0dc8bde765dd601e82"
+  "testSourceCommit": "0854b994a9e1ce5e41e3a07528383866acdca94a"
 }

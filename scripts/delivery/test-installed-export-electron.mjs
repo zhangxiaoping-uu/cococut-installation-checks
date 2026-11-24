@@ -3,7 +3,7 @@ import {app,BrowserWindow,session} from 'electron';import fs from 'node:fs/promi
 const {values}=parseArgs({options:{'app-root':{type:'string'},output:{type:'string'},work:{type:'string'}}});
 const repo=path.resolve(values['app-root']),dir=path.resolve(values.work),output=path.resolve(values.output);
 const load=name=>import(pathToFileURL(path.join(repo,'client/products/packaging/runtime/electron',name)));
-const {openLocalPreview}=await load('local-preview.mjs'),{compiledPlayerHtml}=await load('compiled-player.mjs'),{renderDependencies}=await load('render-cache.mjs'),{renderHybrid}=await load('hybrid-render.mjs');
+const {openLocalPreview}=await load('local-preview.mjs'),{compiledPlayerHtml}=await load('compiled-player.mjs'),{renderDependencies}=await load('render-cache.mjs'),{renderHybrid,checkChunk}=await load('hybrid-render.mjs');
 const {localScheduler}=await import(pathToFileURL(path.join(repo,'client/products/packaging/host/local-resources.mjs')));
 const {createExportBrowserAlias}=await import(pathToFileURL(path.join(repo,'client/products/packaging/host/export-browser-workspace.mjs')));
 app.disableHardwareAcceleration();app.setPath('userData',path.join(dir,'electron-test-profile'));app.on('window-all-closed',()=>{});
@@ -28,7 +28,10 @@ app.whenReady().then(async()=>{let alias,player;const report={platform:process.p
  if(!state.images.every(i=>i.ready))throw Error('Image failed to load');if(!normalized.video.startsWith(pathToFileURL(root+path.sep).href))throw Error('Source identity changed');
  await fs.writeFile(path.join(dir,'export-player.png'),(await player.capture()).toPNG());await player.close();player=null;
  localScheduler.admission={sample:()=>({cpu:0,memory:.1,available:8*1024**3,pressureLevel:0}),snapshot:()=>({})};
- const start=Date.now();await renderHybrid(task,{ffmpeg,ffprobe,sceneFingerprint:renderDependencies},selected,path.join(dir,'path-fixture.mp4'),signal,{BrowserWindow,session},{pixelValidation:'regression'});report.exportMs=Date.now()-start;
+ const start=Date.now();await renderHybrid(task,{ffmpeg,ffprobe,sceneFingerprint:renderDependencies},selected,path.join(dir,'path-fixture.mp4'),signal,{BrowserWindow,session},{});report.exportMs=Date.now()-start;report.normalDeliveryOptions=true;
+ // Exercise normal delivery in the long source tree. Keep the optional pixel
+ // audit next to the short test output, rather than inside the user's cache.
+ player=await openLocalPreview({BrowserWindow,session},selected,task,task.clips,signal,{fullSize:true});await checkChunk({ffmpeg,ffprobe},player,{start:0,end:30},{width:320,height:180,fps:30,duration:1},path.join(dir,'path-fixture.mp4'),task.clips,signal);report.pixelConsistencyVerified=true;await player.close();player=null;
  report.output=JSON.parse((await run(ffprobe,['-v','error','-show_streams','-of','json',path.join(dir,'path-fixture.mp4')],{timeout:10000})).stdout).streams.map(s=>({type:s.codec_type,width:s.width,height:s.height,duration:s.duration}));
  if(!(await fs.stat(path.join(root,'host.mp4'))).size)throw Error('Source removed');report.clientRelease=JSON.parse(await fs.readFile(path.join(repo,'client-release.json')));report.realAccountFilesRead=false;report.paidModelCalls=false;report.status='passed';
 }catch(e){report.status='failed';report.error=e.stack;console.error(e.stack);}finally{await player?.close().catch(()=>{});await alias?.close();await fs.writeFile(output,JSON.stringify(report,null,2));console.log(JSON.stringify(report));app.exit(report.status==='passed'?0:1);}});
