@@ -4,19 +4,25 @@ import {createReadStream} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {join,resolve} from 'node:path';
 import {spawn} from 'node:child_process';
+import {request as httpsRequest} from 'node:https';
+import {isIP} from 'node:net';
 assert.equal(process.platform,'win32');assert.equal(process.env.GITHUB_ACTIONS,'true');
 const candidate=JSON.parse(await readFile('candidate.json')),base=resolve('.local/rebuild/windows-96'),folder=join(base,'installer/nsis-web');await mkdir(folder,{recursive:true});
 const digest=async file=>{const h=createHash('sha256');for await(const b of createReadStream(file))h.update(b);return h.digest('hex');};
+// A runner may receive an unreachable overseas CDN node. Retry a DNS-verified
+// node for this same official hostname, retaining TLS and every range/hash check.
+const cdnAddresses=candidate.verifiedCdnIPv4||[];assert.ok(cdnAddresses.length<=4&&cdnAddresses.every(a=>isIP(a)===4));
+const directCdn=(url,options,address)=>new Promise((accept,reject)=>{assert.equal(url.hostname,'www.xiongdoudou.com');const req=httpsRequest(url,{headers:options.headers,signal:options.signal,family:4,lookup:(_name,o,cb)=>o.all?cb(null,[{address,family:4}]):cb(null,address,4)},res=>{const chunks=[];let size=0;res.on('data',b=>{size+=b.length;if(size>16*1024**2+1){res.destroy(Error('RANGE_BODY_TOO_LARGE'));return;}chunks.push(b);});res.once('error',reject);res.once('end',()=>accept(new Response(Buffer.concat(chunks),{status:res.statusCode,headers:res.headers})));});req.once('error',reject);req.end();});
 const mode=process.argv[2];assert.ok([undefined,'--download-only','--verify-only'].includes(mode));
 if(mode!=='--verify-only')for(const asset of candidate.assets){
  const url=new URL(asset.url);assert.equal(url.origin,'https://www.xiongdoudou.com');assert.equal(url.pathname,'/downloads/files/windows-0.1.5-246/'+asset.name);assert.match(asset.sha256,/^[a-f0-9]{64}$/);
  const file=await open(join(folder,asset.name),'wx'),stop=new AbortController(),deadline=AbortSignal.timeout(1800000);let completed=0,next=0;const chunk=16*1024**2,parts=Math.ceil(asset.bytes/chunk);
  await file.truncate(asset.bytes);
- const worker=async()=>{while(next<parts){const index=next++,start=index*chunk,end=Math.min(asset.bytes-1,start+chunk-1);let body;
-  for(let attempt=0;attempt<3;attempt++){
+ const worker=async()=>{while(next<parts){const index=next++,start=index*chunk,end=Math.min(asset.bytes-1,start+chunk-1);let body,useAlternative=false;
+  for(let attempt=0;attempt<5;attempt++){
    if(stop.signal.aborted||deadline.aborted)throw Error('DOWNLOAD_ABORTED');
-   try{const r=await fetch(url,{headers:{Range:`bytes=${start}-${end}`},signal:AbortSignal.any([stop.signal,deadline,AbortSignal.timeout(180000)]),redirect:'error'});assert.equal(r.status,206);assert.equal(r.headers.get('content-range'),`bytes ${start}-${end}/${asset.bytes}`);body=Buffer.from(await r.arrayBuffer());assert.equal(body.length,end-start+1);break;}
-   catch(error){if(attempt===2){stop.abort();throw error;}console.log(JSON.stringify({stage:'range-retry',name:asset.name,index,attempt:attempt+1,error:error.name}));}
+   try{const options={headers:{Range:`bytes=${start}-${end}`},signal:AbortSignal.any([stop.signal,deadline,AbortSignal.timeout(180000)]),redirect:'error'};const r=useAlternative&&cdnAddresses.length?await directCdn(url,options,cdnAddresses[(attempt-1)%cdnAddresses.length]):await fetch(url,options);assert.equal(r.status,206);assert.equal(r.headers.get('content-range'),`bytes ${start}-${end}/${asset.bytes}`);body=Buffer.from(await r.arrayBuffer());assert.equal(body.length,end-start+1);break;}
+   catch(error){if(['UND_ERR_CONNECT_TIMEOUT','ENETUNREACH','ETIMEDOUT'].includes(error.cause?.code))useAlternative=true;if(attempt===4){stop.abort();throw error;}console.log(JSON.stringify({stage:'range-retry',name:asset.name,index,attempt:attempt+1,error:error.name}));}
   }
   let written=0;while(written<body.length){const result=await file.write(body,written,body.length-written,start+written);assert.ok(result.bytesWritten>0);written+=result.bytesWritten;}
   completed+=body.length;console.log(JSON.stringify({stage:'range-downloaded',name:asset.name,completed,total:asset.bytes,part:index+1,parts}));
